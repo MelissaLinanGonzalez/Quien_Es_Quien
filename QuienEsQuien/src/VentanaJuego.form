@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="VentanaJuego">
+  <grid id="27dc6" binding="panelPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="1ffae" binding="panelCabecera" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="1cf4d" class="javax.swing.JLabel" binding="lblTitulo">
+            <constraints/>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="ab1eb" class="javax.swing.JButton" binding="btnAyuda">
+            <constraints/>
+            <properties>
+              <text value="?"/>
+            </properties>
+          </component>
+          <component id="c5a03" class="javax.swing.JButton" binding="btnReiniciar">
+            <constraints/>
+            <properties>
+              <text value="Reiniciar"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="89542" binding="panelControles" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="fbbb2" class="javax.swing.JComboBox" binding="comboPreguntas">
+            <constraints/>
+            <properties/>
+          </component>
+          <component id="33a22" class="javax.swing.JButton" binding="btnPreguntar">
+            <constraints/>
+            <properties>
+              <text value="Preguntas"/>
+            </properties>
+          </component>
+          <component id="b9779" class="javax.swing.JLabel" binding="lblMensaje">
+            <constraints/>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <scrollpane id="5a9cf" binding="scrollPaneTablero">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="11e79" binding="panelTablero" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

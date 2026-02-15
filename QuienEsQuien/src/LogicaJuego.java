@@ -14,16 +14,27 @@ public class LogicaJuego {
         seleccionarPersonajeOculto();
     }
 
-    private void inicializarPersonajes(){
-        personajes.add(new Personaje("Harry Potter", "Imagenes/harryPotter.jpg", "hombre", "castaño oscuro", "castaños", true, false, false));
-        personajes.add(new Personaje("Albus Dumbledore", "Imagenes/albusDumbledore.jpeg", "hombre", "blanco", "castaños", true, true, true));
-        personajes.add(new Personaje("Draco Malfoy", "Imagenes/dracoMalfoy.jpeg", "hombre", "rubio platino", "azul grisáceo", false, false, false));
-        personajes.add(new Personaje("Ginny Weasly", "Imagenes/ginnyWeasly.jpeg", "mujer", "pelirrojo", "azules", false, false, false));
-        personajes.add(new Personaje("Hermione Granger", "Imagenes/hermioneGranger.jpg", "mujer", "castaño rojizo", "marrones", false, false, false));
-        personajes.add(new Personaje("Minerva McGonagall", "Imagenes/minervaMcGonagall.jpeg", "mujer", "gris plateado", "azul claro", true, true, false));
-        personajes.add(new Personaje("Ron Weasly", "Imagenes/ronWeasly.png", "hombre", "pelirrojo", "verdes", false, false, false));
-        personajes.add(new Personaje("Rubeus Hagrid", "Imagenes/RubeusHagrid.jpg", "hombre", "negro", "marrón oscuros", false, false, true));
-        personajes.add(new Personaje("Severus Snape", "Imagenes/severusSnape.jpeg", "hombre", "negro", "marrón oscuros", false, false, false));
+    private void inicializarPersonajes() {
+        personajes.add(new Personaje("Harry Potter", "Imagenes/harryPotter.jpg", "hombre", "Castaño", "Verde", true, false, false));
+        personajes.add(new Personaje("Bellatrix Lestrange", "Imagenes/bellatrixLestrange.jpg", "mujer", "Negro", "Negro", false, false, false));
+        personajes.add(new Personaje("Ron Weasly", "Imagenes/ronWeasly.png", "hombre", "Pelirrojo", "Azul", false, false, false));
+        personajes.add(new Personaje("Luna Lovegood", "Imagenes/lunaLovegood.jpg", "mujer", "Rubio", "Azul", false, false, false));
+        personajes.add(new Personaje("Albus Dumbledore", "Imagenes/albusDumbledore.jpeg", "hombre", "Blanco", "Azul", true, true, true));
+        personajes.add(new Personaje("Cho Chang", "Imagenes/choChang.png", "mujer", "Negro", "Marrón", false, false, false));
+        personajes.add(new Personaje("Draco Malfoy", "Imagenes/dracoMalfoy.jpeg", "hombre", "Rubio", "Gris", false, false, false));
+        personajes.add(new Personaje("Lord Voldemort", "Imagenes/Lordvoldemort.jpg", "hombre", "Calvo", "Rojo", false, false, false));
+        personajes.add(new Personaje("Hermione Granger", "Imagenes/hermioneGranger.jpg", "mujer", "Castaño", "Marrón", false, false, false));
+        personajes.add(new Personaje("Dobby", "Imagenes/dobby.jpg", "hombre", "Calvo", "Verde", false, false, false));
+        personajes.add(new Personaje("Rubeus Hagrid", "Imagenes/RubeusHagrid.jpg", "hombre", "Negro", "Negro", false, false, true));
+        personajes.add(new Personaje("Neville Longbottom", "Imagenes/nevilleLongbottom.jpg", "hombre", "Castaño", "Marrón", false, false, false));
+        personajes.add(new Personaje("Ginny Weasly", "Imagenes/ginnyWeasly.jpeg", "mujer", "Pelirrojo", "Marrón", false, false, false));
+        personajes.add(new Personaje("Fleur Delacour", "Imagenes/fleurDelacour.png", "mujer", "Rubio", "Azul", false, true, false));
+        personajes.add(new Personaje("Severus Snape", "Imagenes/severusSnape.jpeg", "hombre", "Negro", "Negro", false, false, false));
+        personajes.add(new Personaje("Molly Weasley", "Imagenes/mollyWeasly.jpg", "mujer", "Pelirrojo", "Marrón", false, false, false));
+        personajes.add(new Personaje("Minerva McGonagall", "Imagenes/minervaMcGonagall.jpeg", "mujer", "Gris", "Verde", true, true, false));
+        personajes.add(new Personaje("Nymphadora Tonks", "Imagenes/tonks.jpg", "mujer", "Castaño", "Marrón", false, false, false));
+        personajes.add(new Personaje("Sirius Black", "Imagenes/siriusBlack.jpg", "hombre", "Negro", "Gris", false, false, true));
+        personajes.add(new Personaje("Remus Lupin", "Imagenes/remusLupin.jpeg", "hombre", "Castaño", "Marrón", false, false, true));
     }
 
     public void seleccionarPersonajeOculto(){
