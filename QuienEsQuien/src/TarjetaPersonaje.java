@@ -11,14 +11,16 @@ public class TarjetaPersonaje extends JPanel {
     private float opacidad;
     private Image imagenPersonaje;
 
-    private static final Color COLOR_FONDO = new Color(10, 20, 50);
+    // Ajuste de colores: se ha reducido el canal alfa (opacidad) para que sean traslúcidos
+    private static final Color COLOR_FONDO = new Color(10, 20, 50, 160); // Más traslúcido
     private static final Color COLOR_DORADO = new Color(255, 215, 0);
-    private static final Color COLOR_BORDE = new Color(255, 215, 0, 180);
-    private static final Color COLOR_NOMBRE_BG = new Color(10, 20, 50, 200);
-    private static final Color COLOR_DESCARTADO_OVERLAY = new Color(10, 20, 50, 160);
+    private static final Color COLOR_BORDE = new Color(255, 215, 0, 140);
+    private static final Color COLOR_NOMBRE_BG = new Color(10, 20, 50, 120); // Más traslúcido
+    private static final Color COLOR_DESCARTADO_OVERLAY = new Color(10, 20, 50, 180);
 
-    private static final int ANCHO_CARTA = 155;
-    private static final int ALTO_CARTA = 200;
+    // Dimensiones más cuadradas: se ha reducido el ancho para ajustarse más a la imagen
+    private static final int ANCHO_CARTA = 140; // Antes 155
+    private static final int ALTO_CARTA = 185;  // Antes 200
     private static final int TAMANO_IMAGEN = 120;
 
     public TarjetaPersonaje(Personaje personaje) {
@@ -28,7 +30,7 @@ public class TarjetaPersonaje extends JPanel {
 
         setPreferredSize(new Dimension(ANCHO_CARTA, ALTO_CARTA));
         setMinimumSize(new Dimension(ANCHO_CARTA, ALTO_CARTA));
-        setOpaque(false);
+        setOpaque(false); // Importante para que se vea el fondo a través del panel
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setToolTipText("Clic para adivinar: " + personaje.getNombre());
 
@@ -81,6 +83,7 @@ public class TarjetaPersonaje extends JPanel {
         int w = getWidth();
         int h = getHeight();
 
+        // Fondo traslúcido
         g2d.setColor(COLOR_FONDO);
         g2d.fillRoundRect(1, 1, w - 2, h - 2, 16, 16);
 
@@ -88,12 +91,8 @@ public class TarjetaPersonaje extends JPanel {
         g2d.setStroke(new BasicStroke(2.5f));
         g2d.drawRoundRect(1, 1, w - 3, h - 3, 16, 16);
 
-        g2d.setColor(new Color(255, 215, 0, 60));
-        g2d.setStroke(new BasicStroke(1.0f));
-        g2d.drawRoundRect(5, 5, w - 11, h - 11, 12, 12);
-
         int imgX = (w - TAMANO_IMAGEN) / 2;
-        int imgY = 14;
+        int imgY = 10; // Espacio superior reducido
 
         if (imagenPersonaje != null) {
             Shape clipAnterior = g2d.getClip();
@@ -102,23 +101,18 @@ public class TarjetaPersonaje extends JPanel {
             g2d.drawImage(imagenPersonaje, imgX, imgY, TAMANO_IMAGEN, TAMANO_IMAGEN, this);
             g2d.setClip(clipAnterior);
 
-            g2d.setColor(new Color(255, 215, 0, 100));
-            g2d.setStroke(new BasicStroke(1.5f));
+            g2d.setColor(new Color(255, 215, 0, 80));
+            g2d.setStroke(new BasicStroke(1.2f));
             g2d.drawRoundRect(imgX, imgY, TAMANO_IMAGEN, TAMANO_IMAGEN, 10, 10);
-        } else {
-            g2d.setColor(new Color(30, 40, 70));
-            g2d.fillRoundRect(imgX, imgY, TAMANO_IMAGEN, TAMANO_IMAGEN, 10, 10);
-            g2d.setColor(COLOR_DORADO);
-            g2d.setFont(new Font("Serif", Font.ITALIC, 11));
-            g2d.drawString("Sin imagen", imgX + 25, imgY + 65);
         }
 
-        int nombreY = imgY + TAMANO_IMAGEN + 8;
+        // Nombre del personaje más ajustado
+        int nombreY = imgY + TAMANO_IMAGEN + 6;
         g2d.setColor(COLOR_NOMBRE_BG);
         g2d.fillRoundRect(8, nombreY, w - 16, h - nombreY - 8, 8, 8);
 
         g2d.setColor(COLOR_DORADO);
-        g2d.setFont(new Font("Serif", Font.BOLD, 13));
+        g2d.setFont(new Font("Serif", Font.BOLD, 12)); // Fuente ligeramente más pequeña
         FontMetrics fm = g2d.getFontMetrics();
         String nombre = personaje.getNombre();
         int textoX = (w - fm.stringWidth(nombre)) / 2;
@@ -126,16 +120,9 @@ public class TarjetaPersonaje extends JPanel {
         g2d.drawString(nombre, textoX, textoY);
 
         if (descartado) {
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
             g2d.setColor(COLOR_DESCARTADO_OVERLAY);
             g2d.fillRoundRect(1, 1, w - 2, h - 2, 16, 16);
-
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
-            g2d.setColor(new Color(180, 180, 180));
-            g2d.setFont(new Font("Serif", Font.ITALIC, 11));
-            FontMetrics fm2 = g2d.getFontMetrics();
-            String desc = "Descartado";
-            g2d.drawString(desc, (w - fm2.stringWidth(desc)) / 2, h / 2);
         }
 
         g2d.dispose();

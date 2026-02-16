@@ -3,18 +3,22 @@ import java.util.List;
 import java.util.Random;
 
 public class LogicaJuego {
-    private List<Personaje> personajes;
-    private Personaje personjeOculto;
-    private Random random;
 
-    public LogicaJuego(){
-        this.personajes = new ArrayList<>();
-        this.random = new Random();
+    private List<Personaje> personajes;
+    private List<Personaje> personajesActivos;
+    private Personaje personajeSecreto;
+    private int intentosRestantes;
+    // LÍMITE DE VIDAS
+    private static final int MAX_INTENTOS = 3;
+
+    public LogicaJuego() {
+        personajes = new ArrayList<>();
         inicializarPersonajes();
-        seleccionarPersonajeOculto();
+        reiniciarPartida();
     }
 
     private void inicializarPersonajes() {
+        // Carga de personajes (Asegúrate de que las rutas y nombres coincidan con tus archivos)
         personajes.add(new Personaje("Harry Potter", "Imagenes/harryPotter.jpg", "hombre", "Castaño", "Verde", true, false, false));
         personajes.add(new Personaje("Bellatrix Lestrange", "Imagenes/bellatrixLestrange.jpg", "mujer", "Negro", "Negro", false, false, false));
         personajes.add(new Personaje("Ron Weasly", "Imagenes/ronWeasly.png", "hombre", "Pelirrojo", "Azul", false, false, false));
@@ -32,22 +36,43 @@ public class LogicaJuego {
         personajes.add(new Personaje("Severus Snape", "Imagenes/severusSnape.jpeg", "hombre", "Negro", "Negro", false, false, false));
         personajes.add(new Personaje("Molly Weasley", "Imagenes/mollyWeasly.jpg", "mujer", "Pelirrojo", "Marrón", false, false, false));
         personajes.add(new Personaje("Minerva McGonagall", "Imagenes/minervaMcGonagall.jpeg", "mujer", "Gris", "Verde", true, true, false));
-        personajes.add(new Personaje("Nymphadora Tonks", "Imagenes/tonks.jpg", "mujer", "Castaño", "Marrón", false, false, false));
+        personajes.add(new Personaje("Nymphadora Tonks", "Imagenes/tonks.jpg", "mujer", "Pelirrojo", "Marrón", false, false, false));
         personajes.add(new Personaje("Sirius Black", "Imagenes/siriusBlack.jpg", "hombre", "Negro", "Gris", false, false, true));
         personajes.add(new Personaje("Remus Lupin", "Imagenes/remusLupin.jpeg", "hombre", "Castaño", "Marrón", false, false, true));
     }
 
-    public void seleccionarPersonajeOculto(){
-        int indice = random.nextInt(personajes.size());
-        this.personjeOculto = personajes.get(indice);
-        System.out.println("DEBUG: El personaje oculto es " + personjeOculto.getNombre());
+    public void reiniciarPartida() {
+        personajesActivos = new ArrayList<>(personajes);
+        Random rand = new Random();
+        personajeSecreto = personajes.get(rand.nextInt(personajes.size()));
+        intentosRestantes = MAX_INTENTOS;
+        System.out.println("Secreto (Debug): " + personajeSecreto.getNombre());
     }
 
-    public List<Personaje> getPersonajes(){
+    // --- LÓGICA DE VIDAS ---
+    public int getIntentosRestantes() {
+        return intentosRestantes;
+    }
+
+    public void restarIntento() {
+        if (intentosRestantes > 0) {
+            intentosRestantes--;
+        }
+    }
+
+    public boolean quedanIntentos() {
+        return intentosRestantes > 0;
+    }
+
+    public List<Personaje> getPersonajes() {
         return personajes;
     }
 
-    public Personaje getPersonjeOculto(){
-        return personjeOculto;
+    public boolean esPersonajeSecreto(Personaje p) {
+        return p.getNombre().equals(personajeSecreto.getNombre());
+    }
+
+    public Personaje getPersonajeSecreto() {
+        return personajeSecreto;
     }
 }
